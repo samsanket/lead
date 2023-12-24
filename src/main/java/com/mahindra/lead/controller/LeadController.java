@@ -2,6 +2,7 @@ package com.mahindra.lead.controller;
 
 import com.mahindra.lead.dto.LeadDTO;
 import com.mahindra.lead.response.ApiResponse;
+import com.mahindra.lead.response.GetAllLeadsResponse;
 import com.mahindra.lead.service.LeadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,8 +29,8 @@ public class LeadController {
         return  leadService.createLead(leadDTO);
     }
 
-//    @GetMapping("/get")
-//    public ApiResponse getAllLeads(){
-//        return leadService.getAllLeads();
-//    }
+    @GetMapping("/get")
+    public GetAllLeadsResponse getAllLeads(@RequestParam String mobileNumber){
+        return leadService.getAllLeads(mobileNumber);
+    }
 }

@@ -3,10 +3,7 @@ package com.mahindra.lead.service;
 import com.mahindra.lead.dto.LeadDTO;
 import com.mahindra.lead.model.Lead;
 import com.mahindra.lead.repository.LeadsRepository;
-import com.mahindra.lead.response.ApiResponse;
-import com.mahindra.lead.response.ErrorResponse;
-import com.mahindra.lead.response.LeadAlreadyExistsException;
-import com.mahindra.lead.response.LeadValidationException;
+import com.mahindra.lead.response.*;
 import com.mahindra.lead.validations.LeadValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,11 +42,39 @@ public class LeadService {
             return new ApiResponse("error",new ErrorResponse("E10010",errorMessage));
         }
 
-
         Lead lead= new Lead(leadDTO);
         System.out.println(lead);
         leadsRepository.save(lead);
         return new ApiResponse("success", "Created Leads Successfully");
     }
 
+    public GetAllLeadsResponse getAllLeads(String mobileNumber) {
+     List<Lead> leads =leadsRepository.findByMobileNumber(mobileNumber);
+
+     if (leads.size()==0){
+         return getResponse();
+
+     }
+     GetAllLeadsResponse getAllLeadsResponse = new GetAllLeadsResponse();
+     getAllLeadsResponse.setData(leads);
+     getAllLeadsResponse.setStatus("success");
+    return getAllLeadsResponse;
+    }
+
+    private static GetAllLeadsResponse getResponse() {
+        GetAllLeadsResponse getAllLeadsResponse= new GetAllLeadsResponse();
+        getAllLeadsResponse.setStatus("error");
+        ErrorResponse errorResponse = getErrorResponse();
+        getAllLeadsResponse.setErrorResponse(errorResponse);
+        return getAllLeadsResponse;
+    }
+
+    private static ErrorResponse getErrorResponse() {
+        List<String> errorMessage= new ArrayList<>();
+        errorMessage.add("No Lead found with the Mobile Number ");
+        ErrorResponse errorResponse= new ErrorResponse();
+        errorResponse.setMessages(errorMessage);
+        errorResponse.setCode("E10011");
+        return errorResponse;
+    }
 }
