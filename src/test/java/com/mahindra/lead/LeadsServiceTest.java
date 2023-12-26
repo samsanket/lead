@@ -51,7 +51,6 @@ public class LeadsServiceTest {
 
     @Test
     public void testGetAllLeads() {
-        // Mock data
         String mobileNumber = "1234567890";
         Lead lead1 = new Lead(/* provide necessary lead details */);
         Lead lead2 = new Lead(/* provide necessary lead details */);
@@ -59,29 +58,22 @@ public class LeadsServiceTest {
         mockLeads.add(lead1);
         mockLeads.add(lead2);
 
-        // Mock repository behavior
         Mockito.when(leadsRepository.findByMobileNumber(mobileNumber)).thenReturn(mockLeads);
 
-        // Call the method to be tested
         GetAllLeadsResponse result = leadService.getLeadsByMobileNumber(mobileNumber);
 
-        // Assert the result
         assertEquals("success", result.getStatus());
         assertEquals(mockLeads, result.getData());
     }
 
     @Test
     public void testGetAllLeadsNoLeadsFound() {
-        // Mock data
         String mobileNumber = "1234567890";
 
-        // Mock repository behavior
         Mockito.when(leadsRepository.findByMobileNumber(mobileNumber)).thenReturn(new ArrayList<>());
 
-        // Call the method to be tested
         GetAllLeadsResponse result = leadService.getLeadsByMobileNumber(mobileNumber);
 
-        // Assert the result
         assertEquals("error", result.getStatus());
         assertEquals("E10011", result.getErrorResponse().getCode());
         assertEquals("No Lead found with the Mobile Number " + mobileNumber, result.getErrorResponse().getMessages().get(0));

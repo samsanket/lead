@@ -18,19 +18,10 @@ public class LeadDTO {
 
 
     public LeadDTO() {
+        //default
     }
 
-    public LeadDTO(Integer leadId, String firstName, String middleName, String lastName, String mobileNumber,
-                   String gender, LocalDate dob, String email) {
-        this.leadId = leadId;
-        this.firstName = firstName;
-        this.middleName = middleName;
-        this.lastName = lastName;
-        this.mobileNumber = mobileNumber;
-        this.gender = gender;
-        this.dob = dob;
-        this.email = email;
-    }
+
 
 
     public Integer getLeadId() {

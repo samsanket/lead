@@ -4,7 +4,6 @@ package com.mahindra.lead.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.mahindra.lead.dto.LeadDTO;
 import jakarta.persistence.*;
-import org.springframework.lang.NonNull;
 
 import java.time.LocalDate;
 
@@ -42,17 +41,6 @@ public class Lead {
     public Lead() {
     }
 
-    public Lead(Integer leadId, String firstName, String middleName, String lastName, String mobileNumber,
-                String gender, LocalDate dob, String email) {
-        this.leadId = leadId;
-        this.firstName = firstName;
-        this.middleName = middleName;
-        this.lastName = lastName;
-        this.mobileNumber = mobileNumber;
-        this.gender = gender;
-        this.dob = dob;
-        this.email = email;
-    }
 
     public Lead(LeadDTO leadDTO) {
         this.leadId=leadDTO.getLeadId();

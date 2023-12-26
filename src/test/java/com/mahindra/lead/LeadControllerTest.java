@@ -30,39 +30,29 @@ public class LeadControllerTest {
 
     @Test
     public void testAddLeads() {
-        // Mock data
         LeadDTO leadDTO = new LeadDTO(/* provide necessary leadDTO details */);
         ApiResponse expectedApiResponse = new ApiResponse("success", "Created Leads Successfully");
 
-        // Mock service behavior
         when(leadService.createLead(any())).thenReturn(expectedApiResponse);
 
-        // Call the controller method
         ApiResponse actualApiResponse = leadController.addLeads(leadDTO);
 
-        // Verify the service method is called with the correct argument
         Mockito.verify(leadService).createLead(leadDTO);
 
-        // Assert the result
         assertEquals(expectedApiResponse, actualApiResponse);
     }
 
     @Test
     public void testGetAllLeads() {
-        // Mock data
         String mobileNumber = "1234567890";
         GetAllLeadsResponse expectedResponse = new GetAllLeadsResponse(/* provide necessary response details */);
 
-        // Mock service behavior
         when(leadService.getLeadsByMobileNumber(mobileNumber)).thenReturn(expectedResponse);
 
-        // Call the controller method
         GetAllLeadsResponse actualResponse = leadController.getLeadsByMobileNumber(mobileNumber);
 
-        // Verify the service method is called with the correct argument
         Mockito.verify(leadService).getLeadsByMobileNumber(mobileNumber);
 
-        // Assert the result
         assertEquals(expectedResponse, actualResponse);
     }
 }

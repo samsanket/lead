@@ -24,7 +24,6 @@ public class LeadValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         LeadDTO lead = (LeadDTO) target;
-        System.out.println(lead);
         validateLeadId(lead.getLeadId(), errors);
         validateFirstName(lead.getFirstName(), errors);
         validateLastName(lead.getLastName(), errors);

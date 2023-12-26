@@ -9,5 +9,4 @@ import java.util.List;
 @Repository
 public interface LeadsRepository extends JpaRepository<Lead, Integer> {
     List<Lead> findByMobileNumber(String mobileNumber);
-    // You can add custom query methods here if needed
 }
