@@ -1,0 +1,69 @@
+{
+	"info": {
+		"_postman_id": "4d9e0a81-81b5-4e2c-80b6-a18949f81b1e",
+		"name": "mahindra",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17308890"
+	},
+	"item": [
+		{
+			"name": "addleads",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"leadId\": \"56789\",\n  \"firstName\": \"sarang\",\n  \"middleName\": \"shekhar\",\n  \"lastName\": \"deooees\",\n  \"mobileNumber\": \"8625831155\",\n  \"gender\": \"Male\",\n  \"dob\":\"12/12/1998\",\n  \"email\": \"maels.foods@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/leads/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"leads",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getleadsbymobilenumber",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/leads/get?mobileNumber=8877887788",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"leads",
+						"get"
+					],
+					"query": [
+						{
+							"key": "mobileNumber",
+							"value": "8877887788"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

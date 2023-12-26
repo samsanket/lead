@@ -24,7 +24,6 @@ public class ApiResponse{
     }
 
     public  ApiResponse(String status,ErrorResponse errorResponse){
-        System.out.println("errorResponse in cunstructor" + errorResponse);
         this.status=status;
         this.errorResponse=errorResponse;
     }

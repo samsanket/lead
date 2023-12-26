@@ -52,8 +52,24 @@ public class LeadsServiceTest {
     @Test
     public void testGetAllLeads() {
         String mobileNumber = "1234567890";
-        Lead lead1 = new Lead(/* provide necessary lead details */);
-        Lead lead2 = new Lead(/* provide necessary lead details */);
+        Lead lead1 = new Lead();
+        lead1.setLeadId(1);
+        lead1.setFirstName("John");
+        lead1.setLastName("Doe");
+        lead1.setMobileNumber("9876543210");
+        lead1.setGender("Male");
+        lead1.setDob(LocalDate.of(1990, 1, 15));
+        lead1.setEmail("john.doe@example.com");
+
+        Lead lead2 = new Lead();
+        lead2.setLeadId(1);
+        lead2.setFirstName("sanket");
+        lead2.setLastName("Doe");
+        lead2.setMobileNumber("7218515261");
+        lead2.setGender("Male");
+        lead2.setDob(LocalDate.of(1990, 1, 15));
+        lead2.setEmail("sanket.doe@example.com");
+
         List<Lead> mockLeads = new ArrayList<>();
         mockLeads.add(lead1);
         mockLeads.add(lead2);
