@@ -54,13 +54,13 @@ public class LeadControllerTest {
         GetAllLeadsResponse expectedResponse = new GetAllLeadsResponse(/* provide necessary response details */);
 
         // Mock service behavior
-        when(leadService.getAllLeads(mobileNumber)).thenReturn(expectedResponse);
+        when(leadService.getLeadsByMobileNumber(mobileNumber)).thenReturn(expectedResponse);
 
         // Call the controller method
-        GetAllLeadsResponse actualResponse = leadController.getAllLeads(mobileNumber);
+        GetAllLeadsResponse actualResponse = leadController.getLeadsByMobileNumber(mobileNumber);
 
         // Verify the service method is called with the correct argument
-        Mockito.verify(leadService).getAllLeads(mobileNumber);
+        Mockito.verify(leadService).getLeadsByMobileNumber(mobileNumber);
 
         // Assert the result
         assertEquals(expectedResponse, actualResponse);

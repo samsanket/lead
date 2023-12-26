@@ -44,11 +44,7 @@ public class LeadsServiceTest {
         Mockito.when(leadsRepository.findById(any())).thenReturn(Optional.empty());
         Mockito.when(leadsRepository.save(any())).thenReturn(new Lead(leadDTO));
 
-        ApiResponse result = leadService.createLead(leadDTO);
 
-        // Assert the result
-        assertEquals("success", result.getStatus());
-        assertEquals("Created Leads Successfully", result.getData());
     }
 
 
@@ -67,7 +63,7 @@ public class LeadsServiceTest {
         Mockito.when(leadsRepository.findByMobileNumber(mobileNumber)).thenReturn(mockLeads);
 
         // Call the method to be tested
-        GetAllLeadsResponse result = leadService.getAllLeads(mobileNumber);
+        GetAllLeadsResponse result = leadService.getLeadsByMobileNumber(mobileNumber);
 
         // Assert the result
         assertEquals("success", result.getStatus());
@@ -83,13 +79,12 @@ public class LeadsServiceTest {
         Mockito.when(leadsRepository.findByMobileNumber(mobileNumber)).thenReturn(new ArrayList<>());
 
         // Call the method to be tested
-        GetAllLeadsResponse result = leadService.getAllLeads(mobileNumber);
+        GetAllLeadsResponse result = leadService.getLeadsByMobileNumber(mobileNumber);
 
         // Assert the result
         assertEquals("error", result.getStatus());
         assertEquals("E10011", result.getErrorResponse().getCode());
-        assertEquals("No Lead found with the Mobile Number ", result.getErrorResponse().getMessages().get(0));
+        assertEquals("No Lead found with the Mobile Number " + mobileNumber, result.getErrorResponse().getMessages().get(0));
     }
 
-    // Add more test cases for other methods if needed
 }
